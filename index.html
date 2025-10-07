@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jura GIGA 10 - User Guide App</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Welcome Screen -->
+    <div id="welcome-screen" class="screen active">
+        <div class="container">
+            <div class="welcome-hero">
+                <img src="https://pplx-res.cloudinary.com/image/upload/v1759860643/pplx_project_search_images/6b9b79894c3e758ae734b35cdd6a700653db77cf.png" alt="Jura GIGA 10 Coffee Machine" class="hero-image">
+                <div class="welcome-content">
+                    <h1>Welcome to Your GIGA 10</h1>
+                    <p>Your comprehensive guide to mastering the Jura GIGA 10 coffeemaker. From setup to maintenance, we'll help you brew the perfect cup every time.</p>
+                    <div class="welcome-actions">
+                        <button class="btn btn--primary btn--lg" onclick="showScreen('setup-wizard')">Start Setup Wizard</button>
+                        <button class="btn btn--secondary btn--lg" onclick="showScreen('main-menu')">Explore Features</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Setup Wizard -->
+    <div id="setup-wizard" class="screen">
+        <div class="container">
+            <div class="wizard-header">
+                <button class="btn btn--outline" onclick="showScreen('welcome-screen')">← Back</button>
+                <h2>Setup Wizard</h2>
+                <div class="progress-indicator">
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progress-fill"></div>
+                    </div>
+                    <span class="progress-text" id="progress-text">Step 1 of 6</span>
+                </div>
+            </div>
+            
+            <div class="wizard-content" id="wizard-content">
+                <!-- Steps will be dynamically populated -->
+            </div>
+            
+            <div class="wizard-navigation">
+                <button class="btn btn--outline" id="prev-step" onclick="previousStep()" disabled>Previous</button>
+                <button class="btn btn--primary" id="next-step" onclick="nextStep()">Next</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Menu -->
+    <div id="main-menu" class="screen">
+        <div class="container">
+            <div class="menu-header">
+                <button class="btn btn--outline" onclick="showScreen('welcome-screen')">← Home</button>
+                <h2>GIGA 10 Guide</h2>
+            </div>
+            
+            <div class="menu-grid">
+                <div class="menu-card" onclick="showScreen('components-guide')">
+                    <div class="menu-icon">🔧</div>
+                    <h3>Machine Components</h3>
+                    <p>Interactive guide to all machine parts and their functions</p>
+                </div>
+                
+                <div class="menu-card" onclick="showScreen('drinks-guide')">
+                    <div class="menu-icon">☕</div>
+                    <h3>Coffee Drinks</h3>
+                    <p>Step-by-step instructions for 35+ specialty drinks</p>
+                </div>
+                
+                <div class="menu-card" onclick="showScreen('troubleshooting')">
+                    <div class="menu-icon">🛠️</div>
+                    <h3>Troubleshooting</h3>
+                    <p>Solutions for common problems and error messages</p>
+                </div>
+                
+                <div class="menu-card" onclick="showScreen('maintenance')">
+                    <div class="menu-icon">🧽</div>
+                    <h3>Care & Maintenance</h3>
+                    <p>Daily, weekly, and monthly care instructions</p>
+                </div>
+                
+                <div class="menu-card" onclick="showScreen('quick-reference')">
+                    <div class="menu-icon">📋</div>
+                    <h3>Quick Reference</h3>
+                    <p>Specifications, warranty info, and emergency contacts</p>
+                </div>
+                
+                <div class="menu-card" onclick="showScreen('setup-wizard')">
+                    <div class="menu-icon">⚙️</div>
+                    <h3>Setup Wizard</h3>
+                    <p>Re-run the initial setup process</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Components Guide -->
+    <div id="components-guide" class="screen">
+        <div class="container">
+            <div class="screen-header">
+                <button class="btn btn--outline" onclick="showScreen('main-menu')">← Back</button>
+                <h2>Machine Components</h2>
+            </div>
+            
+            <div class="components-overview">
+                <img src="https://pplx-res.cloudinary.com/image/upload/v1759860643/pplx_project_search_images/6b9b79894c3e758ae734b35cdd6a700653db77cf.png" alt="GIGA 10 Overview" class="machine-diagram">
+                <div class="hotspots">
+                    <div class="hotspot" style="top: 15%; left: 25%;" onclick="showComponent(0)">1</div>
+                    <div class="hotspot" style="top: 25%; right: 20%;" onclick="showComponent(1)">2</div>
+                    <div class="hotspot" style="top: 55%; left: 45%;" onclick="showComponent(2)">3</div>
+                    <div class="hotspot" style="top: 45%; left: 10%;" onclick="showComponent(3)">4</div>
+                    <div class="hotspot" style="bottom: 15%; left: 35%;" onclick="showComponent(4)">5</div>
+                    <div class="hotspot" style="top: 55%; right: 15%;" onclick="showComponent(5)">6</div>
+                </div>
+            </div>
+            
+            <div class="components-list" id="components-list">
+                <!-- Components will be dynamically populated -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Drinks Guide -->
+    <div id="drinks-guide" class="screen">
+        <div class="container">
+            <div class="screen-header">
+                <button class="btn btn--outline" onclick="showScreen('main-menu')">← Back</button>
+                <h2>Coffee Drinks Guide</h2>
+            </div>
+            
+            <div class="drinks-grid" id="drinks-grid">
+                <!-- Drinks will be dynamically populated -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Troubleshooting -->
+    <div id="troubleshooting" class="screen">
+        <div class="container">
+            <div class="screen-header">
+                <button class="btn btn--outline" onclick="showScreen('main-menu')">← Back</button>
+                <h2>Troubleshooting</h2>
+            </div>
+            
+            <div class="search-box">
+                <input type="text" class="form-control" placeholder="Search for a problem..." id="trouble-search" onkeyup="filterTroubleshooting()">
+            </div>
+            
+            <div class="troubleshooting-list" id="troubleshooting-list">
+                <!-- Troubleshooting items will be dynamically populated -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Maintenance -->
+    <div id="maintenance" class="screen">
+        <div class="container">
+            <div class="screen-header">
+                <button class="btn btn--outline" onclick="showScreen('main-menu')">← Back</button>
+                <h2>Care & Maintenance</h2>
+            </div>
+            
+            <div class="maintenance-tabs">
+                <button class="tab-btn active" onclick="showMaintenanceTab('daily')">Daily</button>
+                <button class="tab-btn" onclick="showMaintenanceTab('weekly')">Weekly</button>
+                <button class="tab-btn" onclick="showMaintenanceTab('monthly')">Monthly</button>
+                <button class="tab-btn" onclick="showMaintenanceTab('as_needed')">As Needed</button>
+            </div>
+            
+            <div class="maintenance-content" id="maintenance-content">
+                <!-- Maintenance tasks will be dynamically populated -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Quick Reference -->
+    <div id="quick-reference" class="screen">
+        <div class="container">
+            <div class="screen-header">
+                <button class="btn btn--outline" onclick="showScreen('main-menu')">← Back</button>
+                <h2>Quick Reference</h2>
+            </div>
+            
+            <div class="reference-sections">
+                <div class="card">
+                    <div class="card__header">
+                        <h3>Machine Specifications</h3>
+                    </div>
+                    <div class="card__body">
+                        <div class="spec-grid" id="specs-grid">
+                            <!-- Specs will be dynamically populated -->
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card__header">
+                        <h3>Emergency Contacts</h3>
+                    </div>
+                    <div class="card__body">
+                        <div class="contact-item">
+                            <strong>Customer Service:</strong> 1-800-JURA-USA
+                        </div>
+                        <div class="contact-item">
+                            <strong>Technical Support:</strong> support@jura.com
+                        </div>
+                        <div class="contact-item">
+                            <strong>Parts & Service:</strong> <a href="https://us.jura.com/service" target="_blank">us.jura.com/service</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card__header">
+                        <h3>Pro Tips</h3>
+                    </div>
+                    <div class="card__body">
+                        <ul class="tips-list">
+                            <li>Use only roasted, untreated coffee beans for best results</li>
+                            <li>Clean the milk system daily to prevent clogs</li>
+                            <li>Descale regularly based on your water hardness level</li>
+                            <li>Keep the machine level and in a well-ventilated area</li>
+                            <li>Use the dual grinders for different bean types</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal for detailed information -->
+    <div id="info-modal" class="modal hidden">
+        <div class="modal-overlay" onclick="closeModal()"></div>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modal-title"></h3>
+                <button class="btn-close" onclick="closeModal()">×</button>
+            </div>
+            <div class="modal-body" id="modal-body">
+                <!-- Modal content will be dynamically populated -->
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
